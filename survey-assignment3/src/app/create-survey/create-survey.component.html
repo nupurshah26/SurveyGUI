@@ -1,0 +1,105 @@
+<form [formGroup]="scheduleForm" class="cs-content" name="scheduleForm" id="surveyform" (ngSubmit)="onSubmit()">
+    <h1 class="heading cs-content">Student Survey Form</h1>
+    <p class="require">* Required Fields</p>
+		<!-- Firstname, Lastname, Address, Telephone, Email, URL, Date Of Survey details -->
+		<p><label for="firstname" class="required">First Name: </label>
+			<input class="cs-input" type="text" name="firstname" id="firstname" formControlName="firstname" required autofocus mValidateOnBlur />
+            <span *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="require">
+				First Name is required. Please enter only alphabets.
+			</span>
+        </p>
+        <p><label for="lastname" class="required">Last Name: </label>
+            <input class="cs-input" type="text" name="lastname" id="lastname" formControlName="lastname" required autofocus mValidateOnBlur />
+            <span *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="require">
+				Last Name is required. Please enter only alphabets.
+			</span>
+        </p>
+        <p><label for="address" class="required">Address: </label>
+            <input class="cs-input" type="text" name="address" id="address" formControlName="address" required autofocus mValidateOnBlur />
+            <span *ngIf="address.invalid && (address.dirty || address.touched)" class="require">
+				Address is required.
+			</span>
+        </p>
+        <p><label for="city" class="required">City: </label>
+            <input class="cs-input" type="text" name="city" id="city" formControlName="city" required autofocus mValidateOnBlur />
+            <span *ngIf="city.invalid && (city.dirty || city.touched)" class="require">
+				City is required.
+			</span>
+        </p>
+        <p><label for="state" class="required">State: </label>
+            <input class="cs-input" type="text" name="state" id="state" formControlName="state" required autofocus mValidateOnBlur />
+            <span *ngIf="state.invalid && (state.dirty || state.touched)" class="require">
+				State is required.
+			</span>
+        </p>
+        <p><label for="zip" class="required">Zip: </label>
+            <input class="cs-input" type="number" name="zip" id="zip" formControlName="zip" required autofocus mValidateOnBlur />
+            <span *ngIf="zip.invalid && (zip.dirty || zip.touched)" class="require">
+				Zip is required. Please enter only numbers.
+			</span>
+        </p>
+        <p><label for="telephone" class="required">Telephone: </label>
+            <input class="cs-input" type="number" name="telephone" id="telephone" formControlName="telephone" required autofocus mValidateOnBlur />
+            <span *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="require">
+				Telephone is required. Please enter only numbers.
+			</span>
+        </p>
+        <p><label for="email" class="required">Email: </label>
+            <input class="cs-input" type="email" name="email" id="email" formControlName="email" required autofocus mValidateOnBlur />
+            <span *ngIf="email.invalid && (email.dirty || email.touched)" class="require">
+				Email is required.
+			</span>
+        </p>
+        <p><label for="dos" class="required">Date Of Survey: </label>
+            <input class="cs-input" type="date" name="dos" id="dos" formControlName="dos" required autofocus mValidateOnBlur /></p>
+            <span *ngIf="dos.invalid && (dos.dirty || dos.touched)" class="require">
+				Date Of Survey is required.
+			</span>
+        <!-- Visitor Liked the most about campus -->
+        <p>Liked most about the campus:<br/>
+            <input class="cs-check" type="checkbox" name="likedabtcampus" id="students" value="Students" (change)="onCheckboxChange($event, 'Students')"/>&nbsp;
+            <label for="students">Students</label>&nbsp;
+			
+            <input class="cs-check" type="checkbox" name="likedabtcampus" id="location" value="Location" (change)="onCheckboxChange($event, 'Location')"/>&nbsp;
+            <label for="location">Location</label>&nbsp;
+			
+            <input class="cs-check" type="checkbox" name="likedabtcampus" id="campus" value="Campus" (change)="onCheckboxChange($event, 'Campus')"/>&nbsp;
+            <label for="campus">Campus</label>&nbsp;
+			
+            <input class="cs-check" type="checkbox" name="likedabtcampus" id="atmosphere" value="Atmosphere" (change)="onCheckboxChange($event, 'Atmosphere')"/>&nbsp;
+            <label for="atmosphere">Atmosphere</label>&nbsp;
+			
+            <input class="cs-check" type="checkbox" name="likedabtcampus" id="dormrooms" value="Dorm rooms" (change)="onCheckboxChange($event, 'Dorm rooms')"/>&nbsp;
+            <label for="dormrooms">Dorm rooms</label>&nbsp;
+			
+            <input class="cs-check" type="checkbox" name="likedabtcampus" id="sports" value="Sports" (change)="onCheckboxChange($event, 'Sports')"/>&nbsp;
+            <label for="sports">Sports</label> 
+        </p>
+        <!-- Interested in University reasons -->
+		<p>Interested in the university because:<br/>
+			<input class="cs-radio" type="radio" formControlName="intrestinuni" name="intrestinuni" id="friends" value="Friends" />&nbsp;
+  			<label for="friends">Friends</label>&nbsp;
+
+  			<input class="cs-radio" type="radio" formControlName="intrestinuni" name="intrestinuni" id="television" value="Television" />&nbsp;
+  			<label for="television">Television</label>&nbsp;
+			
+  			<input class="cs-radio" type="radio" formControlName="intrestinuni" name="intrestinuni" id="internet" value="Internet" />&nbsp;
+  			<label for="internet">Internet</label>&nbsp;
+			
+  			<input class="cs-radio" type="radio" formControlName="intrestinuni" name="intrestinuni" id="other" value="Other" />&nbsp;
+  			<label for="other">Other</label>
+  		</p>
+        <!-- Likelihood of him/her recommending this school to other prospective students -->
+		<p><label for="recos">Recommending this school to other prospective students:</label><br/>
+			<select class="cs-select" name="recos" id="recos" formControlName="recos">
+				<option value="">Please select</option>
+				<option value="Very Likely">Very Likely</option>
+				<option value="Likely">Likely</option>
+				<option value="Unlikely">Unlikely</option>
+			</select>
+		</p>
+		<!-- Submit the form -->
+		<p><button type="submit" class="cs-button" id="submitbtn">Submit</button> &nbsp;&nbsp;
+            <button type="cancel" class="cs-button">Cancel</button> </p>
+        
+</form>
