@@ -12,11 +12,13 @@ import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } 
 })
 export class CreateSurveyComponent implements OnInit {
   students: string[]=[];
-  student = '';
-  likedabtcampus: String[] = [];
+  student: Student;
+  likedabtcampus: string[] = [];
   submitted = false;
 
-  constructor(private http:HttpClient, private router: Router, private studentService: StudentService, private fb: FormBuilder) { }
+  constructor(private http:HttpClient, private router: Router, private studentService: StudentService, private fb: FormBuilder) { 
+    this.student = new Student();
+  }
     
   get firstname(): FormControl {
     return this.scheduleForm.get('firstname') as FormControl;
@@ -79,9 +81,18 @@ export class CreateSurveyComponent implements OnInit {
     }
   }
 
-  saveresponse() {
+  createStudent() {
+    this.student = Object.assign(this.student, this.scheduleForm.value);
+    this.student.likedabtcampus = this.likedabtcampus.toString();
+  }
+
+  saveresponse(form: any) {
+    // console.warn(this.student)
+    // console.warn(form)
     this.studentService.postStudent(this.student).subscribe(
         succeed=>{
+          this.submitted = true;
+          // console.log("yes");
           alert('Form submitted\n'  + this.student);      
           this.router.navigate(['./home']);
         },
@@ -90,11 +101,9 @@ export class CreateSurveyComponent implements OnInit {
         });  
   }
   
-  onSubmit(): void {
-    this.saveresponse();
-    this.submitted = true;
-    console.log("yes");
-    return;
+  onSubmit(form: any): void {
+    this.createStudent();
+    this.saveresponse(form);
   };
   
   

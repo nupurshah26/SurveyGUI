@@ -14,8 +14,8 @@ export class StudentService {
 
   constructor(private http: HttpClient) { }
 
-  postStudent(student: Object): Observable<Object> {
-    console.log(student.toString);
+  postStudent(student: Student): Observable<Object> {
+    console.warn(student.toString);
     return this.http.post(this.post_url, student);
     }
   
