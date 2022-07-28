@@ -11,6 +11,7 @@ export class Student {
         public dos: string,
         public likedabtcampus: string,
         public intrestinuni: string,
-        public recos: string        
+        public recos: string
+        
       ) {}
 }

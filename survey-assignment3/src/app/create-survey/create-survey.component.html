@@ -1,4 +1,5 @@
-<form [formGroup]="scheduleForm" class="cs-content" name="scheduleForm" id="surveyform" (ngSubmit)="onSubmit()">
+<div [hidden]="submitted"></div>
+<form [formGroup]="scheduleForm" class="cs-content" name="scheduleForm" id="surveyform" (ngSubmit)="onSubmit()" autocomplete="on">
     <h1 class="heading cs-content">Student Survey Form</h1>
     <p class="require">* Required Fields</p>
 		<!-- Firstname, Lastname, Address, Telephone, Email, URL, Date Of Survey details -->
@@ -101,5 +102,7 @@
 		<!-- Submit the form -->
 		<p><button type="submit" class="cs-button" id="submitbtn">Submit</button> &nbsp;&nbsp;
             <button type="cancel" class="cs-button">Cancel</button> </p>
-        
 </form>
+<div [hidden]="!submitted">
+    <h4>Submission received!</h4>
+  </div> 

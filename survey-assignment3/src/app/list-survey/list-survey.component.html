@@ -1,1 +1,37 @@
-<p>list-survey works!</p>
+<div class="cs-content">
+<h2 class="heading">Previous responses</h2>
+      <table class="table table-bordered" id="surveydata">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Date of submission</th>
+            <th>Likes about college</th>
+            <th>Interested</th>
+            <th>Recommend</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students | async">
+            <td>{{student.firstname}}</td>
+            <td>{{student.lastname}}</td>
+            <td>{{student.address}}</td>
+            <td>{{student.city}}</td>
+            <td>{{student.state}}</td>
+            <td>{{student.zip}}</td>
+            <td>{{student.telephone}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.dos}}</td>
+            <td>{{student.likedabtcampus}}</td>
+            <td>{{student.intrestinuni}}</td>
+            <td>{{student.recos}}</td>            
+         </tr>
+        </tbody>
+      </table>
+    </div>

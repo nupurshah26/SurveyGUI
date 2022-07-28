@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Student } from '../student.model';
+import { Router } from '@angular/router';
+import { Observable} from "rxjs";
+import {StudentService} from '../student.service'
 
 @Component({
   selector: 'app-list-survey',
@@ -6,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-survey.component.css']
 })
 export class ListSurveyComponent implements OnInit {
+  students: Observable<Student[]> | undefined;
+  constructor(private router: Router, private studentService: StudentService) { }
 
-  constructor() { }
+  ngOnInit(): void {this.showdata();
+  }
 
-  ngOnInit(): void {
+  showdata() {
+    this.students = this.studentService.getStudent();
   }
 
 }

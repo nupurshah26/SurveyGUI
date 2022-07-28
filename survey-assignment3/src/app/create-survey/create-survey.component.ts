@@ -14,6 +14,7 @@ export class CreateSurveyComponent implements OnInit {
   students: string[]=[];
   student = '';
   likedabtcampus: String[] = [];
+  submitted = false;
 
   constructor(private http:HttpClient, private router: Router, private studentService: StudentService, private fb: FormBuilder) { }
     
@@ -55,11 +56,12 @@ export class CreateSurveyComponent implements OnInit {
     city: new FormControl('', Validators.required),
     state: new FormControl('', Validators.required),
     zip: new FormControl('', [Validators.required, Validators.pattern('[0-9]{5}')]),
-    telephone: new FormControl('', [Validators.required, Validators.pattern('[0-9]{10]')]),
+    telephone: new FormControl('', [Validators.required, Validators.pattern('[0-9]{10}')]),
     email: new FormControl('', Validators.required),
     dos: new FormControl('', Validators.required),
     likedabtcampus: new FormControl(),
-    intrestinuni: new FormControl()
+    intrestinuni: new FormControl(),
+    recos: new FormControl()
   })
 
   onCheckboxChange(event : any, value : any) {
@@ -76,8 +78,23 @@ export class CreateSurveyComponent implements OnInit {
       this.likedabtcampus.push(value);
     }
   }
+
+  saveresponse() {
+    this.studentService.postStudent(this.student).subscribe(
+        succeed=>{
+          alert('Form submitted\n'  + this.student);      
+          this.router.navigate(['./home']);
+        },
+        error=>{
+          alert('failed to submit the form\n' + this.student);
+        });  
+  }
   
   onSubmit(): void {
+    this.saveresponse();
+    this.submitted = true;
+    console.log("yes");
+    return;
   };
   
   

@@ -1,0 +1,33 @@
+.cs-content {
+    margin-left:auto;
+    margin-right:auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #D8D8D8 !important;
+}
+.heading {
+    color: #006633;
+    padding-left: 7px;
+}
+#surveydata {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#surveydata td, #surveydata th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#surveydata tr:nth-child(even){background-color: #f2f2f2;}
+
+#surveydata tr:hover {background-color: #ddd;}
+
+#surveydata th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #006633;
+  color: white;
+}
