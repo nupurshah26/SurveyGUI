@@ -1,5 +1,5 @@
 <div [hidden]="submitted"></div>
-<form [formGroup]="scheduleForm" class="cs-content" name="scheduleForm" id="surveyform" (ngSubmit)="onSubmit()" autocomplete="on">
+<form [formGroup]="scheduleForm" class="cs-content" name="scheduleForm" id="surveyform" (ngSubmit)="onSubmit(scheduleForm.value)" autocomplete="on">
     <h1 class="heading cs-content">Student Survey Form</h1>
     <p class="require">* Required Fields</p>
 		<!-- Firstname, Lastname, Address, Telephone, Email, URL, Date Of Survey details -->
