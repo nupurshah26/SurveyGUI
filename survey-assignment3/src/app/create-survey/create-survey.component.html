@@ -115,7 +115,7 @@
 		</p>
 		<!-- Submit the form -->
 		<p><button type="submit" class="cs-button" id="submitbtn" [disabled]="form.invalid">Submit</button> &nbsp;&nbsp;
-            <button type="cancel" class="cs-button">Cancel</button> </p>
+            <button type="reset" class="cs-button" (click)="resetForm()">Cancel</button> </p>
 </form>
 <div [hidden]="!submitted">
     <h4>Submission received!</h4>

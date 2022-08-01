@@ -93,12 +93,9 @@ export class CreateSurveyComponent implements OnInit {
   }
 
   saveresponse(form: any) {
-    // console.warn(this.student)
-    // console.warn(form)
     this.studentService.postStudent(this.student).subscribe(
         succeed=>{
           this.submitted = true;
-          // console.log("yes");
           alert('Form submitted\n'  + this.student);      
           this.router.navigate(['./home']);
         },
@@ -112,5 +109,9 @@ export class CreateSurveyComponent implements OnInit {
     this.saveresponse(form);
   };
   
+  resetForm() {
+    this.scheduleForm.reset();
+    this.submitted = false;
+  }
   
     } 
