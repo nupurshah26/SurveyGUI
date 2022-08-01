@@ -81,7 +81,12 @@ textarea {
     cursor:pointer;
     white-space:nowrap
 }
-.cs-button:hover {
+.cs-button:disabled {
+    background-color: #fade8c;
+    color:gray;
+    cursor:default;
+}
+.cs-button:enabled:hover {
     box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
 }
 .cs-container {

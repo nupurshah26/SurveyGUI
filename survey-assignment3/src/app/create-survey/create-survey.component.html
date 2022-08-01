@@ -4,55 +4,69 @@
     <p class="require">* Required Fields</p>
 		<!-- Firstname, Lastname, Address, Telephone, Email, URL, Date Of Survey details -->
 		<p><label for="firstname" class="required">First Name: </label>
-			<input class="cs-input" type="text" name="firstname" id="firstname" formControlName="firstname" required autofocus mValidateOnBlur />
+			<input class="cs-input" type="text" name="firstname" id="firstname" formControlName="firstname" autofocus  />
             <span *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="require">
-				First Name is required. Please enter only alphabets.
+                <div *ngIf="firstname.errors?.['required']">First Name is required.</div>
+                <div *ngIf="firstname.errors?.['pattern']">Please enter only alphabets.</div>
 			</span>
         </p>
         <p><label for="lastname" class="required">Last Name: </label>
-            <input class="cs-input" type="text" name="lastname" id="lastname" formControlName="lastname" required autofocus mValidateOnBlur />
+            <input class="cs-input" type="text" name="lastname" id="lastname" formControlName="lastname" autofocus  />
             <span *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="require">
-				Last Name is required. Please enter only alphabets.
+                <div *ngIf="lastname.errors?.['required']">Last Name is required.</div>
+                <div *ngIf="lastname.errors?.['pattern']">Please enter only alphabets.</div>
 			</span>
         </p>
         <p><label for="address" class="required">Address: </label>
-            <input class="cs-input" type="text" name="address" id="address" formControlName="address" required autofocus mValidateOnBlur />
+            <input class="cs-input" type="text" name="address" id="address" formControlName="address" autofocus  />
             <span *ngIf="address.invalid && (address.dirty || address.touched)" class="require">
 				Address is required.
 			</span>
         </p>
         <p><label for="city" class="required">City: </label>
-            <input class="cs-input" type="text" name="city" id="city" formControlName="city" required autofocus mValidateOnBlur />
+            <input class="cs-input" type="text" name="city" id="city" formControlName="city" autofocus  />
             <span *ngIf="city.invalid && (city.dirty || city.touched)" class="require">
 				City is required.
 			</span>
         </p>
         <p><label for="state" class="required">State: </label>
-            <input class="cs-input" type="text" name="state" id="state" formControlName="state" required autofocus mValidateOnBlur />
+            <input class="cs-input" type="text" name="state" id="state" formControlName="state" autofocus  />
             <span *ngIf="state.invalid && (state.dirty || state.touched)" class="require">
 				State is required.
 			</span>
         </p>
-        <p><label for="zip" class="required">Zip: </label>
-            <input class="cs-input" type="number" name="zip" id="zip" formControlName="zip" required autofocus mValidateOnBlur />
+        <p><label for="zip" class="required">Zip #####: </label>
+            <input class="cs-input" type="text" name="zip" id="zip" formControlName="zip" placeholder="12345" autofocus  />
             <span *ngIf="zip.invalid && (zip.dirty || zip.touched)" class="require">
-				Zip is required. Please enter only numbers.
-			</span>
+				<div *ngIf="zip.errors?.['required']">Zip is required.</div>
+                <div *ngIf="zip.errors?.['pattern']">Invalid zip pattern #####.</div>
+			</span> 
         </p>
-        <p><label for="telephone" class="required">Telephone: </label>
-            <input class="cs-input" type="number" name="telephone" id="telephone" formControlName="telephone" required autofocus mValidateOnBlur />
+        <p><label for="telephone" class="required">Telephone ###-###-####: </label>
+            <input 
+                class="cs-input" 
+                type="text" 
+                name="telephone" 
+                id="telephone" 
+                formControlName="telephone" 
+                placeholder="123-456-7890"
+                pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
+                />
             <span *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="require">
-				Telephone is required. Please enter only numbers.
-			</span>
+				<div *ngIf="telephone.errors?.['required']">Telephone is required.</div>
+                <div *ngIf="telephone.errors?.['pattern']">Invalid Telephone pattern ###-###-####</div>
+			</span> 
         </p>
         <p><label for="email" class="required">Email: </label>
-            <input class="cs-input" type="email" name="email" id="email" formControlName="email" required autofocus mValidateOnBlur />
+            <input class="cs-input" type="email" name="email" id="email" formControlName="email" autofocus  />
             <span *ngIf="email.invalid && (email.dirty || email.touched)" class="require">
-				Email is required.
+                <div *ngIf="email.errors?.['required']">Email is required.</div>
+                <div *ngIf="email.errors?.['email']">Invalid Email pattern.</div>
 			</span>
+
         </p>
         <p><label for="dos" class="required">Date Of Survey: </label>
-            <input class="cs-input" type="date" name="dos" id="dos" formControlName="dos" required autofocus mValidateOnBlur /></p>
+            <input class="cs-input" type="date" name="dos" id="dos" formControlName="dos" autofocus  /></p>
             <span *ngIf="dos.invalid && (dos.dirty || dos.touched)" class="require">
 				Date Of Survey is required.
 			</span>
@@ -100,7 +114,7 @@
 			</select>
 		</p>
 		<!-- Submit the form -->
-		<p><button type="submit" class="cs-button" id="submitbtn">Submit</button> &nbsp;&nbsp;
+		<p><button type="submit" class="cs-button" id="submitbtn" [disabled]="form.invalid">Submit</button> &nbsp;&nbsp;
             <button type="cancel" class="cs-button">Cancel</button> </p>
 </form>
 <div [hidden]="!submitted">

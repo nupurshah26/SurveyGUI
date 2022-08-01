@@ -16,10 +16,28 @@ export class CreateSurveyComponent implements OnInit {
   likedabtcampus: string[] = [];
   submitted = false;
 
+  scheduleForm =  new FormGroup({
+    firstname: new FormControl('', { validators: [Validators.required, Validators.pattern('[A-Za-z ]*')], updateOn: 'blur'}),
+    lastname: new FormControl('', { validators: [Validators.required, Validators.pattern('[A-Za-z ]*')], updateOn: 'blur'}),
+    address: new FormControl('', { validators: Validators.required, updateOn: 'blur'}),
+    city: new FormControl('', { validators: Validators.required, updateOn: 'blur'}),
+    state: new FormControl('', { validators: Validators.required, updateOn: 'blur'}),
+    zip: new FormControl('', { validators: [Validators.required, Validators.pattern('[0-9]{5}')], updateOn: 'blur'}),
+    telephone: new FormControl('', { validators: Validators.required, updateOn: 'blur' }),
+    email: new FormControl('', {validators: [Validators.required, Validators.email], updateOn: 'blur'}),
+    dos: new FormControl('', { validators: Validators.required, updateOn: 'blur'}),
+    likedabtcampus: new FormControl(),
+    intrestinuni: new FormControl(),
+    recos: new FormControl()
+  })
+  
   constructor(private http:HttpClient, private router: Router, private studentService: StudentService, private fb: FormBuilder) { 
     this.student = new Student();
   }
     
+  get form(): FormGroup {
+    return this.scheduleForm;
+  }
   get firstname(): FormControl {
     return this.scheduleForm.get('firstname') as FormControl;
   }
@@ -48,23 +66,11 @@ export class CreateSurveyComponent implements OnInit {
     return this.scheduleForm.get('dos') as FormControl;
   }
   
+
   ngOnInit(): void {
   }
 
-  scheduleForm =  new FormGroup({
-    firstname: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z ]*')]),
-    lastname: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z ]*')]),
-    address: new FormControl('', Validators.required),
-    city: new FormControl('', Validators.required),
-    state: new FormControl('', Validators.required),
-    zip: new FormControl('', [Validators.required, Validators.pattern('[0-9]{5}')]),
-    telephone: new FormControl('', [Validators.required, Validators.pattern('[0-9]{10}')]),
-    email: new FormControl('', Validators.required),
-    dos: new FormControl('', Validators.required),
-    likedabtcampus: new FormControl(),
-    intrestinuni: new FormControl(),
-    recos: new FormControl()
-  })
+
 
   onCheckboxChange(event : any, value : any) {
     if (!event.target.checked) {
