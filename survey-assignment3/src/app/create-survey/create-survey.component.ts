@@ -96,11 +96,11 @@ export class CreateSurveyComponent implements OnInit {
     this.studentService.postStudent(this.student).subscribe(
         succeed=>{
           this.submitted = true;
-          alert('Form submitted\n'  + this.student);      
+          alert('Form submitted\n');      
           this.router.navigate(['./home']);
         },
         error=>{
-          alert('failed to submit the form\n' + this.student);
+          alert('failed to submit the form\n');
         });  
   }
   

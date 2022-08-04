@@ -40,26 +40,26 @@ public class Student {
     private String recos;
     
     
-	public Student() {
-	}
-    
-	public Student(int id, String firstname, String lastname, String address, String city, String state, String zip,
-			String telephone, String email, String dos, String likedabtcampus, String intrestinuni, String recos) {
-		super();
-		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-		this.telephone = telephone;
-		this.email = email;
-		this.dos = dos;
-		this.likedabtcampus = likedabtcampus;
-		this.intrestinuni = intrestinuni;
-		this.recos = recos;
-	}
+//	public Student() {
+//	}
+//    
+//	public Student(int id, String firstname, String lastname, String address, String city, String state, String zip,
+//			String telephone, String email, String dos, String likedabtcampus, String intrestinuni, String recos) {
+//		super();
+//		this.id = id;
+//		this.firstname = firstname;
+//		this.lastname = lastname;
+//		this.address = address;
+//		this.city = city;
+//		this.state = state;
+//		this.zip = zip;
+//		this.telephone = telephone;
+//		this.email = email;
+//		this.dos = dos;
+//		this.likedabtcampus = likedabtcampus;
+//		this.intrestinuni = intrestinuni;
+//		this.recos = recos;
+//	}
 	
 	
 	
