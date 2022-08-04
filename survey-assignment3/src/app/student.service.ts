@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class StudentService {
 
-  private get_url = 'http://localhost:8080/students';
-  private post_url = 'http://localhost:8080/addStudent';
+  private get_url = 'http://ec2-54-91-184-52.compute-1.amazonaws.com:31760/students';
+  private post_url = 'http://ec2-54-91-184-52.compute-1.amazonaws.com:31760/addStudent';
 
   constructor(private http: HttpClient) { }
 
